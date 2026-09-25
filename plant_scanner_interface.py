@@ -20,7 +20,7 @@ ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 BACKGROUND_PATH = os.path.join(BASE_DIR, "hintergrund.jpg")
 MODEL_PATH = os.path.join(BASE_DIR, "plant_scanner_rooted.keras")
 CLASS_PATH = os.path.join(BASE_DIR, "plant_scanner.json")
-INFO_BACKGROUND_PATH = os.path.join(BASE_DIR, "info_background.jpg")
+INFO_BACKGROUND_PATH = os.path.join(BASE_DIR, "hintergrund.jpg")
 
 
 # ==================================================
