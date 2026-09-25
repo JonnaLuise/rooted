@@ -132,18 +132,36 @@ st.set_page_config(
 def set_background(image_file):
     with open(image_file, "rb") as f:
         encoded = base64.b64encode(f.read()).decode()
-    st.markdown(f"""
+
+    st.markdown(
+        f"""
         <style>
-        .stApp {{
+        /* Gesamter Streamlit-Hintergrund */
+        html, body, [data-testid="stApp"], .stApp {{
             background-image:
-                linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)),
-                url("data:image/jpeg;base64,{encoded}");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+                linear-gradient(
+                    rgba(255, 255, 255, 0.35),
+                    rgba(255, 255, 255, 0.35)
+                ),
+                url("data:image/jpeg;base64,{encoded}") !important;
+
+            background-size: cover !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+        }}
+
+        /* Streamlit Hauptbereich transparent machen */
+        [data-testid="stAppViewContainer"],
+        [data-testid="stMain"],
+        .main,
+        .block-container {{
+            background: transparent !important;
         }}
         </style>
-        """, unsafe_allow_html=True)
+        """,
+        unsafe_allow_html=True
+    )
 
 
 set_background(BACKGROUND_PATH)
