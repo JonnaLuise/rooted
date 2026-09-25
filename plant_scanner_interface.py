@@ -136,35 +136,47 @@ def set_background(image_file):
     st.markdown(
         f"""
         <style>
-        /* kompletter sichtbarer App-Bereich */
-        .stApp,
+        /* Background image for the entire Streamlit app */
+        html,
+        body,
         [data-testid="stApp"],
         [data-testid="stAppViewContainer"],
-        [data-testid="stMain"] {{
+        .stApp {{
             background-image:
                 linear-gradient(
-                    rgba(255, 255, 255, 0.25),
-                    rgba(255, 255, 255, 0.25)
+                    rgba(255, 255, 255, 0.35),
+                    rgba(255, 255, 255, 0.35)
                 ),
                 url("data:image/jpeg;base64,{encoded}") !important;
 
             background-size: cover !important;
-            background-position: center !important;
+            background-position: center center !important;
             background-repeat: no-repeat !important;
             background-attachment: fixed !important;
+        }}
+
+        /* Streamlit puts the actual content on another layer.
+           Make that layer transparent so the image remains visible. */
+        [data-testid="stAppViewContainer"] > .main,
+        [data-testid="stMain"],
+        section.main,
+        .main {{
+            background: transparent !important;
             background-color: transparent !important;
         }}
 
-        /* innere Streamlit-Container dürfen den Hintergrund nicht weiß überdecken */
-        [data-testid="stMainBlockContainer"],
-        .main,
+        /* Main content container must not paint a white background */
         .block-container {{
+            background: transparent !important;
             background-color: transparent !important;
         }}
         </style>
         """,
         unsafe_allow_html=True
     )
+
+
+set_background(BACKGROUND_PATH)
 
 set_background(BACKGROUND_PATH)
 
