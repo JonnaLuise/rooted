@@ -961,8 +961,8 @@ def show_plant_information():
         .replace("\n", "<br>")
     )
 
-    if os.path.exists(INFO_BACKGROUND_PATH):
-        with open(INFO_BACKGROUND_PATH, "rb") as f:
+    if os.path.exists(BACKGROUND_PATH):
+        with open(BACKGROUND_PATH, "rb") as f:
             info_encoded = base64.b64encode(f.read()).decode()
         popup_background = (
             "background-image: linear-gradient("
@@ -1065,8 +1065,8 @@ def show_badge_information():
     else:
         sources_html = ""
 
-    if os.path.exists(INFO_BACKGROUND_PATH):
-        with open(INFO_BACKGROUND_PATH, "rb") as f:
+    if os.path.exists(BACKGROUND_PATH):
+        with open(BACKGROUND_PATH, "rb") as f:
             info_encoded = base64.b64encode(f.read()).decode()
         popup_background = (
             "background-image: linear-gradient("
